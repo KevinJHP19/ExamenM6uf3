@@ -6,7 +6,7 @@ export default function Camareros() {
     const { pedidos } = useContext(PedidoContext);
 
     return (
-        <div>
+        <div className="container mt-3 p-5 border shadow-lg ">
             <h1>Pedidos</h1>
             <table className="table">
                 <thead>
