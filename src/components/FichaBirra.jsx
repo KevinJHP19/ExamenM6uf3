@@ -4,7 +4,7 @@ export default function FichaBirra(){
         <div class="col-6 border ">
           <div class="p-3 d-flex">
               <img src="estrella.jpg" alt="" className="w-100" />
-              <img src="estrella.jpg" alt="" class="w-100" />
+              
             </div>
             <div>
               <h4 class="">Estrella Galicia</h4>
