@@ -8,13 +8,13 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
 
     
     
-    /*const resolverPedido = (id) => {
+    const resolverPedido = (id) => {
         const nuevosPedidos = pedidos.map((pedido) =>
-            pedido.id === id ? { ...pedido, estado: "preparado" } : pedido
+            pedido.id === id ? { ...pedido, estado: "servido" } : pedido
         );
         setPedidos(nuevosPedidos);
         console.log(`Pedido con ID ${id} actualizado a "preparado"`);
-    };*/
+    };
     
 
 
@@ -28,9 +28,9 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
             <td>
                 {
                 estado == "pendiente" ? (
-                    <button className="btn btn-warning" >{estado}</button>
+                    <button className="btn btn-warning" onClick={ () => resolverPedido(id)} >{estado}</button>
                 ) : (
-                    <button className="btn btn-success" >{estado}</button>
+                    <button className="btn btn-success"  onClick={ () => resolverPedido(id)}>{estado}</button>
                 )}
                 
                     
