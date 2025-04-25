@@ -23,7 +23,11 @@ export default function NuevoPedido(){
     function Mandapedido(event){
 
         event.preventDefault(); // Evitar el comportamiento por defecto del formulario  
-        
+        const form = document.getElementById("formularioPedido"); // Acceder al formulario por su id
+        if (!form.checkValidity()) {
+            form.classList.add("was-validated");
+            return;
+        }
         
         const grupo = document.querySelector("#nombregrupo").value; 
         const numeromesa = document.querySelector("#numeromesa").value; 
@@ -54,7 +58,7 @@ export default function NuevoPedido(){
         <div className="row">
             <div className="col-6">
                 <h3>Grupo</h3>
-                <form noValidate className="needs-validation">
+                <form id="formularioPedido" noValidate className="needs-validation">
                     <label htmlFor="nombreGrupo" className="label-control">Nombre del grupo:</label>
                     <input
                         type="text"
