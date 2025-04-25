@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Header from './components/Header'
 
 import './App.css'
 
@@ -7,10 +8,7 @@ function App() {
 
   return (
     <>
-    <header>
-      <h4>Nombre: Kevin Jordan</h4>
-
-    </header>
+    <Header/>
     <main></main>
     <footer>
 
