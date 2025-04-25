@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import Header from './components/Header'
+import Usuarios from './views/Usuarios'
+import Camareros from './views/Camareros'
+
 
 import './App.css'
 
@@ -7,12 +11,12 @@ function App() {
 
   return (
     <>
-    <header>
-      <h4>Nombre: Kevin Jordan</h4>
-
-    </header>
-    <main></main>
+    <Header/>
+    <main>
+      <Usuarios/>
+    </main>
     <footer>
+      <Camareros/>
 
     </footer>
     
