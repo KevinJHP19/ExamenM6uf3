@@ -1,8 +1,14 @@
+import { bd }  from "../bd/bd"; // Importando la base de datos
+
+
+
 export default function NuevoPedido(){
     console.log("Nuevo pedido cargado")
 
+    console.log(bd) // Verificando que la base de datos se importe correctamente
+    
     return(
-        <div class="row">
+        <div class="column">
       <div class="col-6">
           <h3>Grupo</h3>
           <label for="nombreGrupo" class="label-control">Nombre del grupo:</label>
@@ -14,13 +20,15 @@ export default function NuevoPedido(){
           <div class="d-flex gap-3 ">
             <select name="cervezas" id="cervezas" class="form-control">
               <option value="">Selecciona qué birra quieres</option>
-              <option value="">Estrella Galicia</option>
+              {bd.map((birra) => (
+                <option key={birra.id} value={birra.nombre}>{birra.nombre}</option>
+              ))}
             </select>
           
             <input type="number" value="0" className="form-control" />
             </div>
           </div>
-          <button class="btn btn-success mt-4 w-100">¡Enviar pedido!</button>
+          <button class="col-6 btn btn-success mt-4 " >¡Enviar pedido!</button>
         </div>
     )
     
