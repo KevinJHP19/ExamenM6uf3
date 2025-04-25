@@ -1,18 +1,19 @@
-export default function FichaBirra(){
-    console.log("Ficha birra cargada")
-    return(
-        <div class="col-6 border ">
-          <div class="p-3 d-flex">
-              <img src="estrella.jpg" alt="" className="w-100" />
-              
+export default function FichaBirra({ cerveza }) {
+    console.log("Ficha birra cargada");
+
+    if (!cerveza) {
+        return <p>Selecciona una cerveza para ver la información.</p>;
+    }
+
+    return (
+        <div className="col-6 w-100 " height="500px">
+            <div className="p-3 d-flex">
+                <img src={cerveza.imagen} alt={cerveza.cerveza} className="w-100 "  style={{height:'600px'}}/>
             </div>
             <div>
-              <h4 class="">Estrella Galicia</h4>
-              <p>Cerveza suave y equilibrada con un sabor ligeramente amargo y aroma a malta.</p>
+                <h4>{cerveza.nombre}</h4>
+                <p>{cerveza.descripcion}</p>
             </div>
-            
-  
-          </div>
-
-    )
+        </div>
+    );
 }
