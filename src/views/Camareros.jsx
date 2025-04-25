@@ -1,6 +1,5 @@
 import TablaPedidos from "../components/TablaPedidos"; // Corregido el nombre del componente
-import { pedidos } from "../bd/pedidos";
-
+import { pedidos } from "../components/pedidos";
 export default function Camareros() {
     console.log("Camareros cargado");
 
@@ -24,7 +23,7 @@ export default function Camareros() {
                     <tbody>
                         {pedidos.map((pedido) => (
                             <TablaPedidos
-                                key={pedido.id} // Corregido el uso del componente
+                                key={pedido.id}
                                 id={pedido.id}
                                 grupo={pedido.grupo}
                                 numeromesa={pedido.numeromesa}
