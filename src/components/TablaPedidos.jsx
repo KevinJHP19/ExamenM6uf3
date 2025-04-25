@@ -10,11 +10,18 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
     
     const resolverPedido = (id) => {
         const nuevosPedidos = pedidos.map((pedido) =>
+            
             pedido.id === id ? { ...pedido, estado: "servido" } : pedido
         );
         setPedidos(nuevosPedidos);
         console.log(`Pedido con ID ${id} actualizado a "preparado"`);
     };
+    const eliminarPedido = (id) => {
+        // Filtrar el pedido que se desea eliminar
+        const nuevosPedidos = pedidos.filter((pedido) => pedido.id !== id);
+        setPedidos(nuevosPedidos);
+        console.log(`Pedido con ID ${id} eliminado`);
+    }
     
 
 
@@ -39,7 +46,7 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
                 
             </td>
             <td>
-                <button className="btn btn-danger" >
+                <button className="btn btn-danger" onClick={ () => eliminarPedido(id)} >
                     Borrar pedido
                 </button>
             </td>
