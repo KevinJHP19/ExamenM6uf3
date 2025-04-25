@@ -10,7 +10,6 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
     
     const resolverPedido = (id) => {
         const nuevosPedidos = pedidos.map((pedido) =>
-            
             pedido.id === id ? { ...pedido, estado: "servido" } : pedido
         );
         setPedidos(nuevosPedidos);

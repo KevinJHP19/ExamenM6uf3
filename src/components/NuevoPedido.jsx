@@ -19,9 +19,12 @@ export default function NuevoPedido(){
         const selectedCerveza = bd.find((cerveza) => cerveza.nombre === selectedValue); // Buscando la cerveza en la base de datos
         setselectBedida(selectedCerveza); // Actualizando el estado con la cerveza seleccionada
     };
+    
     function Mandapedido(event){
 
-        event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+        event.preventDefault(); // Evitar el comportamiento por defecto del formulario  
+        
+        
         const grupo = document.querySelector("#nombregrupo").value; 
         const numeromesa = document.querySelector("#numeromesa").value; 
         const cantidad = document.querySelector("#cantidad").value; 
@@ -51,30 +54,74 @@ export default function NuevoPedido(){
         <div className="row">
             <div className="col-6">
                 <h3>Grupo</h3>
-                <label htmlFor="nombreGrupo" className="label-control">Nombre del grupo:</label>
-                <input type="text" className="form-control mt-2" placeholder="Borrachos de DAW2" id="nombregrupo" />
-                <label htmlFor="numeroMesa" className="label-control">Mesa número</label>
-                <input type="number" className="form-control mt-2" placeholder="0" id="numeromesa" />
+                <form noValidate className="needs-validation">
+                    <label htmlFor="nombreGrupo" className="label-control">Nombre del grupo:</label>
+                    <input
+                        type="text"
+                        className="form-control mt-2"
+                        placeholder="Borrachos de DAW2"
+                        minLength="4"
+                        maxLength="10"
+                        id="nombregrupo"
+                        required
+                    />
+                    <div className="invalid-feedback">
+                        El nombre del grupo debe tener entre 4 y 10 caracteres.
+                    </div>
 
-                <h3 className="mt-5">Haz tu pedido</h3>
-                <div className="d-flex gap-3">
-                    <select
-                        name="cervezas"
-                        id="cervezas"
-                        className="form-control"
-                        onChange={manejarcambio} 
+                    <label htmlFor="numeroMesa" className="label-control">Mesa número</label>
+                    <input
+                        type="number"
+                        className="form-control mt-2"
+                        placeholder="0"
+                        id="numeromesa"
+                        min="1"
+                        max="15"
+                        required
+                    />
+                    <div className="invalid-feedback">
+                        El número de mesa debe estar entre 1 y 15.
+                    </div>
+
+                    <h3 className="mt-5">Haz tu pedido</h3>
+                    <div className="d-flex gap-3">
+                        <select
+                            name="cervezas"
+                            id="cervezas"
+                            className="form-control"
+                            onChange={manejarcambio}
+                            required
+                        >
+                            <option value="">Selecciona qué birra quieres</option>
+                            {bd.map((birra) => (
+                                <option key={birra.id} value={birra.nombre}>
+                                    {birra.nombre}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="invalid-feedback">
+                            Debes seleccionar una cerveza.
+                        </div>
+
+                        <input
+                            type="number"
+                            defaultValue="0"
+                            className="form-control"
+                            id="cantidad"
+                            min="1"
+                            required
+                        />
+                        <div className="invalid-feedback">
+                            La cantidad de birras debe ser mayor a 0.
+                        </div>
+                    </div>
+                    <button
+                        className="col-6 btn btn-success mt-4"
+                        onClick={Mandapedido}
                     >
-                        <option value="">Selecciona qué birra quieres</option>
-                        {bd.map((birra) => (
-                            <option key={birra.id} value={birra.nombre}>
-                                {birra.nombre}
-                            </option>
-                        ))}
-                    </select>
-
-                    <input type="number" defaultValue="0" className="form-control" id="cantidad" />
-                </div>
-                <button className="col-6 btn btn-success mt-4" onClick={Mandapedido}>¡Enviar pedido!</button>
+                        ¡Enviar pedido!
+                    </button>
+                </form>
             </div>
 
             <div className="col-6">
