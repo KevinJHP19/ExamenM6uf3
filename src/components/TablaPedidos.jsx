@@ -6,12 +6,17 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
 
     const { pedidos, setPedidos } = useContext(PedidoContext);
 
-    // Función para eliminar un pedido
-    const eliminarPedido = () => {
-        const nuevosPedidos = pedidos.filter((pedido) => pedido.id !== id);
+    
+    
+    /*const resolverPedido = (id) => {
+        const nuevosPedidos = pedidos.map((pedido) =>
+            pedido.id === id ? { ...pedido, estado: "preparado" } : pedido
+        );
         setPedidos(nuevosPedidos);
-        console.log(`Pedido con ID ${id} eliminado`);
-    };
+        console.log(`Pedido con ID ${id} actualizado a "preparado"`);
+    };*/
+    
+
 
     return (
         <tr>
@@ -20,10 +25,22 @@ export default function TablaPedidos({ id, grupo, numeromesa, cerveza, cantidad,
             <td>{numeromesa}</td>
             <td>{cerveza}</td>
             <td>{cantidad}</td>
-            <td>{estado}</td>
             <td>
-                <button className="btn btn-danger" onClick={eliminarPedido}>
-                    Eliminar
+                {
+                estado == "pendiente" ? (
+                    <button className="btn btn-warning" >{estado}</button>
+                ) : (
+                    <button className="btn btn-success" >{estado}</button>
+                )}
+                
+                    
+                    
+                    
+                
+            </td>
+            <td>
+                <button className="btn btn-danger" >
+                    Borrar pedido
                 </button>
             </td>
         </tr>

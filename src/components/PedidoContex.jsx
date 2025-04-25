@@ -12,7 +12,7 @@ export function PedidoProvider({ children }) {
             numeromesa: 0,
             cerveza: "Cerveza 1",
             cantidad: 2,
-            estado: "En preparación",
+            estado: "pendiente",
         },
         {
             id: 2,
@@ -20,7 +20,7 @@ export function PedidoProvider({ children }) {
             numeromesa: 1,
             cerveza: "Cerveza 2",
             cantidad: 3,
-            estado: "Listo para servir",
+            estado: "pendiente",
         },
         {
             id: 3,
@@ -28,7 +28,7 @@ export function PedidoProvider({ children }) {
             numeromesa: 2,
             cerveza: "Cerveza 3",
             cantidad: 4,
-            estado: "Entregado",
+            estado: "pendiente",
         },
     ]);
 
@@ -40,7 +40,7 @@ export function PedidoProvider({ children }) {
     };
 
     return (
-        <PedidoContext.Provider value={{ pedidos, agregarPedido, selectBedida, setselectBedida }}>
+        <PedidoContext.Provider value={{ pedidos, agregarPedido, selectBedida, setselectBedida, setPedidos }}>
             {children}
         </PedidoContext.Provider>
     );
