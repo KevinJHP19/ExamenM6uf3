@@ -1,40 +1,39 @@
-import TablaPedidos from "../components/TablaPedidos"; // Corregido el nombre del componente
-import { pedidos } from "../components/pedidos";
+import { useContext } from "react";
+import { PedidoContext } from "../components/PedidoContex";
+import TablaPedidos from "../components/TablaPedidos";
+
 export default function Camareros() {
-    console.log("Camareros cargado");
+    const { pedidos } = useContext(PedidoContext);
 
     return (
-        <div id="tablaPedidos" className="container mt-5 mb-5 p-5 border shadow-lg">
-            <div className="row">
-                <h1 className="text-center mb-5">----- Vista camareros -----</h1>
-                <h3>Pedidos</h3>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Grupo</th>
-                            <th>Mesa</th>
-                            <th>Cerveza</th>
-                            <th>Cantidad</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pedidos.map((pedido) => (
-                            <TablaPedidos
-                                key={pedido.id}
-                                id={pedido.id}
-                                grupo={pedido.grupo}
-                                numeromesa={pedido.numeromesa}
-                                cerveza={pedido.cerveza}
-                                cantidad={pedido.cantidad}
-                                estado={pedido.estado}
-                            />
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+        <div>
+            <h1>Pedidos</h1>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Grupo</th>
+                        <th>Mesa</th>
+                        <th>Cerveza</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {pedidos.map((pedido) => (
+                        <TablaPedidos
+                            key={pedido.id}
+                            id={pedido.id}
+                            grupo={pedido.grupo}
+                            numeromesa={pedido.numeromesa}
+                            cerveza={pedido.cerveza}
+                            cantidad={pedido.cantidad}
+                            estado={pedido.estado}
+                        />
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
